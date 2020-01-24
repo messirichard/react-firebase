@@ -2,7 +2,7 @@ const initialState={
     popup:false,
     isLogin:false,
     isLoading:false,
-    user:'Rich',
+    user:{},
   }
   const reducer = (state=initialState,action)=>{
     if(action.type === 'CHANGE_POPUP'){

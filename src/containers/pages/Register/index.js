@@ -17,7 +17,7 @@ class Register extends Component{
         })
     }
 
-    handleRegisterSubmit = () => {
+    handleRegisterSubmit = async () => {
         const {email,password}=this.state;
         this.props.registerAPI({email,password})
         // MOVE TO REDUCER
@@ -39,8 +39,8 @@ class Register extends Component{
                     <h4>Register</h4>
                     </header>
                     <div className="login-form">
-                        <input type="text" id="email" className="login-input" placeholder="Email" onChange={this.handleChangeText} required autoFocus/>
-                        <input type="password" id="password" className="login-input" placeholder="Password" onChange={this.handleChangeText} required/>
+                        <input type="text" id="email" className="login-input" placeholder="Email" onChange={this.handleChangeText} value={this.state.email} required autoFocus/>
+                        <input type="password" id="password" className="login-input" placeholder="Password" onChange={this.handleChangeText} value={this.state.password} required/>
                         <div className="submit-container">
                             {/* <button onClick={this.handleRegisterSubmit} className="login-button">SIGN UP</button> */}
                             <Button onClick={this.handleRegisterSubmit} title="Register" loading={this.props.isLoading} />

@@ -12,9 +12,9 @@ function App() {
     <Provider store={store}>
       <Router>
         <div>
-            <Route path="/" exact component={Dashboard}>
+            <Route path="/" exact component={Login}>
             </Route>
-            <Route path="/Login" component={Login}>
+            <Route path="/dashboard" component={Dashboard}>
             </Route>
             <Route path="/register" component={Register}>
             </Route>

@@ -1,29 +1,76 @@
 import React, {Component} from 'react';
+import Button from '../../../components/atoms/Button';
 import {connect} from 'react-redux';
-import {actionUserName} from '../../../config/redux/action';
+import {loginUserAPI} from '../../../config/redux/action';
+
 
 class Login extends Component{
-    changeUser= () => {
-        this.props.changeUserName()
+    state ={
+        email:'',
+        password:'',
+    }
+
+    handleChangeText = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    }
+
+    handleLoginSubmit = async () => {
+
+        const {email,password}=this.state;
+        const {history} = this.props
+        const res = await this.props.loginAPI({email,password}).catch(err=>err)
+        if(res === true){
+            // console.log("login sukses")
+            history.push('/dashboard')
+        }
+        else{
+            this.setState({
+                password:''
+            })
+        }
+
+        // MOVE TO REDUCER
+        // firebase.auth().createUserWithEmailAndPassword(email, password).then(res=>{
+        // }).catch(function(error) {
+        //     // Handle Errors here.
+        //     var errorCode = error.code;
+        //     var errorMessage = error.message;
+        //     // ...
+        // });
+        
     }
     render(){
         return(
-            <div>
-                <p>Login Page {this.props.userName} </p>
-                <button onClick={this.changeUser}>Change username</button>
-                <button>Go to Dashboards Uploads</button>
+            <div className="login-container">
+                <section className="login" id="login">
+                    <header>
+                    <h2>Richard APPSS</h2>
+                    <h4>Login</h4>
+                    </header>
+                    <div className="login-form">
+                        <input type="text" id="email" className="login-input" placeholder="Email" onChange={this.handleChangeText} value={this.state.email} required autoFocus/>
+                        <input type="password" id="password" className="login-input" placeholder="Password" onChange={this.handleChangeText} value={this.state.password} required/>
+                        <div className="submit-container">
+                            {/* <button onClick={this.handleLoginSubmit} className="login-button">SIGN UP</button> */}
+                            <Button onClick={this.handleLoginSubmit} title="Login" loading={this.props.isLoading} />
+                            {/* <Button onClick={this.handleLoginSubmit} title="Register" /> */}
+
+                        </div>
+                    </div>
+                </section>
             </div>
         )
     }
 }
 
 const reduxState = (state) => ({
-    popupProps:state.popup,
-    userName:state.user
+    isLoading: state.isLoading
 })
 
 const reduxDispatch = (dispatch) => ({
-    changeUserName: () => dispatch(actionUserName())
+    loginAPI: (data) => dispatch(loginUserAPI(data))
 })
 
 export default connect(reduxState, reduxDispatch) (Login);
