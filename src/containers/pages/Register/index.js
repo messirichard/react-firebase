@@ -30,7 +30,7 @@ class Register extends Component{
             <div className="login-container">
                 <section className="login" id="login">
                     <header>
-                    <h2>Richard APP</h2>
+                    <h2>Richard APPSSSSS</h2>
                     <h4>Register</h4>
                     </header>
                     <div className="login-form">
