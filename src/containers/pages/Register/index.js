@@ -35,7 +35,7 @@ class Register extends Component{
             <div className="login-container">
                 <section className="login" id="login">
                     <header>
-                    <h2>Richard APPS</h2>
+                    <h2>Richard APPSS</h2>
                     <h4>Register</h4>
                     </header>
                     <div className="login-form">
