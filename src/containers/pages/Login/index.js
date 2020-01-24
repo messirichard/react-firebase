@@ -11,7 +11,7 @@ class Login extends Component{
             <div>
                 <p>Login Page {this.props.userName} </p>
                 <button onClick={this.changeUser}>Change username</button>
-                <button>Go to Dashboards Upload</button>
+                <button>Go to Dashboards Uploads</button>
             </div>
         )
     }
