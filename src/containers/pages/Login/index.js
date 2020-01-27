@@ -54,22 +54,32 @@ class Login extends Component{
             return <Redirect to='/register' />
         }
         return(
-            <div className="login-container">
-                <section className="login" id="login">
-                    <header>
-                    <h2>Richard APPS</h2>
-                    <h4>Login</h4>
-                    </header>
-                    <div className="login-form">
-                        <input type="text" id="email" className="login-input" placeholder="Email" onChange={this.handleChangeText} value={this.state.email} required autoFocus/>
-                        <input type="password" id="password" className="login-input" placeholder="Password" onChange={this.handleChangeText} value={this.state.password} required/>
-                        <div className="submit-container">
-                            {/* <button onClick={this.handleLoginSubmit} className="login-button">SIGN UP</button> */}
-                            <Button onClick={this.handleLoginSubmit} title="Login" loading={this.props.isLoading} />
-                            <Button onClick={this.handletoRegistLogin} title="Register" />
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="card">
+                        <div className="card-action teal lighten-1 white-text">
+                            <h3>Login Form</h3>
+                            <h4>Richard APP</h4>
+                        </div>
+                        <div className="card-content">
+                            <div className="form-field">
+                                <label for="username">Email</label>
+                                <input type="text" id="email" className="login-input" placeholder="Email" onChange={this.handleChangeText} value={this.state.email} required autoFocus/>
+                            </div>
+                            <div className="form-field">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" className="login-input" placeholder="Password" onChange={this.handleChangeText} value={this.state.password} required/>
+                            </div>
+                            <div className="form-field d-inline">
+                                {/* <button className="btn-large waves-effect waves-dark">Login</button> */}
+                                <Button onClick={this.handleLoginSubmit} title="Login" loading={this.props.isLoading} />
+                            </div>
+                            <div className="form-field d-inline ml-3">
+                                <Button onClick={this.handletoRegistLogin} title="Register" />
+                            </div>
                         </div>
                     </div>
-                </section>
+                </div>
             </div>
         )
     }

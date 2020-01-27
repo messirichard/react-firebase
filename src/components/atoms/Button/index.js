@@ -2,10 +2,10 @@ import React from 'react';
 
 const Button = ({title, onClick, loading}) => {
     if (loading){
-        return <button className="login-button disable">Loading</button>
+        return <button className="btn-large waves-effect waves-dark disable">Loading</button>
     }
     return (
-        <button onClick={onClick} className="login-button">{title}</button>
+        <button onClick={onClick} className="btn-large waves-effect waves-dark">{title}</button>
     )
 }
 

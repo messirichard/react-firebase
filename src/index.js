@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './containers/pages/App';
 import * as serviceWorker from './serviceWorker';
-import firebase from './config/firebase';
+// import firebase from './config/firebase';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'materialize-css/dist/css/materialize.min.css'
 
 // console.log(firebase);
 
