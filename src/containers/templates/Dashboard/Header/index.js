@@ -11,6 +11,7 @@ class Header extends Component{ render(){ return(
                 <li><a href="collapsible.html">JavaScript</a></li>
             </ul>
         </div>
+        <div className="py-3"></div>
     </nav>
     ) } } 
     

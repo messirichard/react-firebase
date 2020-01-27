@@ -28,6 +28,8 @@ function App() {
             </Route>
             <Route path="/reportout" component={ReportOut}>
             </Route>
+            <Route path="/test" component={Test}>
+            </Route>
         </div>
       </Router>
 
