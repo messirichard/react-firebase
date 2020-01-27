@@ -1,9 +1,12 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+import {BrowserRouter as Router,Route} from "react-router-dom";
 import Dashboard from '../Dashboard';
 import Login from '../Login';
 import Register from '../Register';
+import Packet from '../Dashboard/Packet';
+import ReportIn from '../Dashboard/ReportIn';
+import ReportOut from '../Dashboard/ReportOut';
 import Test from '../Test';
 import { Provider } from 'react-redux';
 import {store} from '../../../config/redux';
@@ -19,7 +22,11 @@ function App() {
             </Route>
             <Route path="/register" component={Register}>
             </Route>
-            <Route path="/test" component={Test}>
+            <Route path="/packet" component={Packet}>
+            </Route>
+            <Route path="/reportin" component={ReportIn}>
+            </Route>
+            <Route path="/reportout" component={ReportOut}>
             </Route>
         </div>
       </Router>

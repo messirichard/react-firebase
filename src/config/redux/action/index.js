@@ -34,14 +34,11 @@ export const loginUserAPI = (data) => (dispatch) =>{
                 dispatch({type: 'CHANGE_ISLOGIN', value:true})
                 dispatch({type: 'CHANGE_USER', value:res.user})
                 resolve(true)
-    
             }).catch(function(error) {
                 dispatch({type: 'CHANGE_LOADING', value:false})
                 dispatch({type: 'CHANGE_ISLOGIN', value:false})
                 reject(false)
-    
             })
         )   
     })
-    
 }
