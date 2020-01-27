@@ -2,12 +2,19 @@ import React, {Component} from 'react';
 import Button from '../../../components/atoms/Button';
 import {connect} from 'react-redux';
 import {loginUserAPI} from '../../../config/redux/action';
-
+import { Redirect } from 'react-router';
 
 class Login extends Component{
     state ={
         email:'',
         password:'',
+        toRegister: false
+    }
+
+    handletoRegistLogin = () => {
+        this.setState({
+            toRegister: true
+        })
     }
 
     handleChangeText = (e) => {
@@ -41,7 +48,11 @@ class Login extends Component{
         // });
         
     }
+    
     render(){
+        if (this.state.toRegister === true) {
+            return <Redirect to='/register' />
+        }
         return(
             <div className="login-container">
                 <section className="login" id="login">
@@ -55,8 +66,7 @@ class Login extends Component{
                         <div className="submit-container">
                             {/* <button onClick={this.handleLoginSubmit} className="login-button">SIGN UP</button> */}
                             <Button onClick={this.handleLoginSubmit} title="Login" loading={this.props.isLoading} />
-                            {/* <Button onClick={this.handleLoginSubmit} title="Register" /> */}
-
+                            <Button onClick={this.handletoRegistLogin} title="Register" />
                         </div>
                     </div>
                 </section>

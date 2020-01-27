@@ -9,6 +9,7 @@ class Register extends Component{
     state ={
         email:'',
         password:'',
+        alert: false
     }
 
     handleChangeText = (e) => {
@@ -18,8 +19,16 @@ class Register extends Component{
     }
 
     handleRegisterSubmit = async () => {
-        const {email,password}=this.state;
-        this.props.registerAPI({email,password})
+        if (this.state.email === "" & this.state.password === ""){
+            alert("Check")
+        }
+        else{
+            const {email,password}=this.state;
+            this.props.registerAPI({email,password})
+            const {history} = this.props
+            const res = await this.props.registerAPI({email,password}).catch(err=>err)
+            history.push('/')
+        }
         // MOVE TO REDUCER
         // firebase.auth().createUserWithEmailAndPassword(email, password).then(res=>{
         // }).catch(function(error) {

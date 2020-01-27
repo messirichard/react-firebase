@@ -4,9 +4,15 @@ class Dashboard extends Component{
     render(){
         return(
             <div>
-                <p>Dashboard Page</p>
-                <button>Go to Register</button>
-                <button>Go to Dashboard</button>
+                <div className="navbar">
+                    <ul>
+                        <li>Home</li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
             </div>
         )
     }
