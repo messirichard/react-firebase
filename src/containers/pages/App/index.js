@@ -4,6 +4,7 @@ import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 import Dashboard from '../Dashboard';
 import Login from '../Login';
 import Register from '../Register';
+import Test from '../Test';
 import { Provider } from 'react-redux';
 import {store} from '../../../config/redux';
 
@@ -17,6 +18,8 @@ function App() {
             <Route path="/dashboard" component={Dashboard}>
             </Route>
             <Route path="/register" component={Register}>
+            </Route>
+            <Route path="/test" component={Test}>
             </Route>
         </div>
       </Router>

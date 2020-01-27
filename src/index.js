@@ -4,6 +4,7 @@ import './index.css';
 import App from './containers/pages/App';
 import * as serviceWorker from './serviceWorker';
 import firebase from './config/firebase';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // console.log(firebase);
 
