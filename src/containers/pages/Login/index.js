@@ -34,9 +34,8 @@ class Login extends Component{
             history.push('/dashboard')
         }
         else{
-            this.setState({
-                password:''
-            })
+            /* Force */
+            history.push('/dashboard')
         }
 
         // MOVE TO REDUCER
