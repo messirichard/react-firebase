@@ -20,6 +20,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import ReportIn from '../Dashboard/ReportIn';
 import ReportOut from '../Dashboard/ReportOut';
 import Packet from '../Dashboard/Packet';
+import Routes from '../routes';
 
 import {
     BrowserRouter as Router,
@@ -173,17 +174,7 @@ export default function Dashboard() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-            <Router>
-                <Switch>
-                    <Route path="/packet" exact component={Packet} />
-                    
-                    <Route path="/reportin" component={ReportIn} />
-                        
-                    <Route path="/reportout" component={ReportOut} />
-                        
-                </Switch>
-            </Router>
-            
+          <Routes/>
       </main>
     </div>
   );
