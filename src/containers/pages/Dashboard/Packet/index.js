@@ -1,4 +1,5 @@
 import React, {Component} from 'react'; 
+import Dashboard from '../';
 
 class Packet extends Component{ 
     render(){ 

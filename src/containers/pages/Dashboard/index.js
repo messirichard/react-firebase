@@ -94,7 +94,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function MiniDrawer() {
+export default function Dashboard() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -175,15 +175,12 @@ export default function MiniDrawer() {
         <div className={classes.toolbar} />
             <Router>
                 <Switch>
-                    <Route path="/packet" component={Packet}>
+                    <Route path="/packet" exact component={Packet} />
                     
-                    </Route>
-                    <Route path="/reportin" component={ReportIn}>
+                    <Route path="/reportin" component={ReportIn} />
                         
-                    </Route>
-                    <Route path="/reportout" component={ReportOut}>
+                    <Route path="/reportout" component={ReportOut} />
                         
-                    </Route>
                 </Switch>
             </Router>
             
@@ -191,3 +188,5 @@ export default function MiniDrawer() {
     </div>
   );
 }
+
+// export default Dashboard;
