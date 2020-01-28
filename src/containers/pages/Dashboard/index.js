@@ -157,7 +157,7 @@ export default function MiniDrawer() {
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
-              console.log({index})
+              {/* console.log({index}) */}
             </ListItem>
           ))}
         </List>
