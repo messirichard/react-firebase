@@ -14,9 +14,8 @@ class Login extends Component{
     }
 
     handletoRegistLogin = () => {
-        this.setState({
-            toRegister: true
-        })
+        const {history} = this.props
+        history.push('/register')
     }
 
     handleChangeText = (e) => {
