@@ -3,7 +3,6 @@ import Button from '../../../components/atoms/Button';
 import {connect} from 'react-redux';
 import {loginUserAPI} from '../../../config/redux/action';
 import { Redirect } from 'react-router';
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class Login extends Component{
@@ -35,7 +34,8 @@ class Login extends Component{
         }
         else{
             /* Force */
-            history.push('/dashboard')
+            // history.push('/dashboard')
+            console.log("error")
         }
 
         // MOVE TO REDUCER

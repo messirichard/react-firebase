@@ -4,7 +4,7 @@ import React from 'react';
 function Main() {
     return (
         <>
-          <p>Ini Dashboard</p>
+          <p>Selamat datang</p>
         </>
     )
 }

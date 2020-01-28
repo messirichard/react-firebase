@@ -38,6 +38,7 @@ export const loginUserAPI = (data) => (dispatch) =>{
                 dispatch({type: 'CHANGE_LOADING', value:false})
                 dispatch({type: 'CHANGE_ISLOGIN', value:false})
                 reject(false)
+
             })
         )   
     })
