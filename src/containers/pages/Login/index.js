@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {loginUserAPI} from '../../../config/redux/action';
 import { Redirect } from 'react-router';
 
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class Login extends Component{
     state ={

@@ -10,8 +10,7 @@ function Routes() {
         <>
             <Router>
                 <Switch>
-                    <Route exact path="/login" exact component={Login} />
-                    <Route path="/" exact component={MainDashboard} />
+                    <Route path="/dashboard" component={MainDashboard} />
                     <Route path="/packet" component={Packet} />
                     <Route component={() => <div>Not found</div>} />
                 </Switch>
