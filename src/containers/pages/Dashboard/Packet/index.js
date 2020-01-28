@@ -1,8 +1,60 @@
-import React, {Component} from 'react'; 
-import Dashboard from '../';
+import React from 'react';
+import MaterialTable from 'material-table';
 
-class Packet extends Component{ 
-    render(){ 
-        return(
-            <div>ini paket</div>
-    ) } } export default Packet;
+
+export default function Packet() {
+  const [state, setState] = React.useState({
+    columns: [
+      { title: 'Packet Name', field: 'name_packet' },
+      { title: 'Price', field: 'price_packet', type: 'numeric' }
+    ],
+    data: [
+      { name_packet: 'Paket Kering', price_packet: 1000 }
+    ],
+  });
+
+  return (
+    <MaterialTable
+      title="Add Packet"
+      columns={state.columns}
+      data={state.data}
+      editable={{
+        onRowAdd: newData =>
+          new Promise(resolve => {
+            setTimeout(() => {
+              resolve();
+              setState(prevState => {
+                const data = [...prevState.data];
+                data.push(newData);
+                return { ...prevState, data };
+              });
+            }, 600);
+          }),
+        onRowUpdate: (newData, oldData) =>
+          new Promise(resolve => {
+            setTimeout(() => {
+              resolve();
+              if (oldData) {
+                setState(prevState => {
+                  const data = [...prevState.data];
+                  data[data.indexOf(oldData)] = newData;
+                  return { ...prevState, data };
+                });
+              }
+            }, 600);
+          }),
+        onRowDelete: oldData =>
+          new Promise(resolve => {
+            setTimeout(() => {
+              resolve();
+              setState(prevState => {
+                const data = [...prevState.data];
+                data.splice(data.indexOf(oldData), 1);
+                return { ...prevState, data };
+              });
+            }, 600);
+          }),
+      }}
+    />
+  );
+}
