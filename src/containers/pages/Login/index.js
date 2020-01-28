@@ -29,8 +29,8 @@ class Login extends Component{
         const {history} = this.props
         const res = await this.props.loginAPI({email,password}).catch(err=>err)
         if(res === true){
-            // console.log("login sukses")
-            history.push('/dashboard')
+            console.log("login sukses", res)
+            // history.push('/dashboard')
         }
         else{
             /* Force */

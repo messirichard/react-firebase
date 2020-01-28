@@ -1,21 +1,36 @@
 import React from 'react';
 import MaterialTable from 'material-table';
+import {database} from '../../../../config/firebase';
 
 
 export default function Packet() {
+    
+    
+    
   const [state, setState] = React.useState({
     columns: [
       { title: 'Packet Name', field: 'name_packet' },
       { title: 'Price', field: 'price_packet', type: 'numeric' }
     ],
     data: [
-      { name_packet: 'Paket Kering', price_packet: 1000 }
+    //   { name_packet: 'Paket Kering', price_packet: 1000 }
+        database.collection('packet_laundry').get()
+            .then((snapshot) => {
+            snapshot.forEach((doc) => {
+                console.log(doc.id, '=>', doc.data());
+                // setState(doc.data())
+                // {doc.data()}
+            });
+        })
+        .catch((err) => {
+            console.log('Error getting documents', err);
+        })
     ],
   });
 
   return (
     <MaterialTable
-      title="Add Packet"
+      title="Packet"
       columns={state.columns}
       data={state.data}
       editable={{
