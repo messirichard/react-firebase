@@ -1,85 +1,61 @@
-import React from 'react';
-import MaterialTable from 'material-table';
+import React, { useState, useEffect, Component } from "react";
+import MaterialTable from "material-table";
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import './Packet.scss';
+// import axios from "axios";
 import {database} from '../../../../config/firebase';
 
 
-export default function Packet() {
-
-
-  state = {
-    name_packet:'',
-    price_packet:0
+class Packet extends Component {
+  constructor(props) {
+    super(props);
+    this.ref = database.collection('packet_laundry');
+    this.unsubscribe = null;
+    this.state = {
+      packet: []
+    };
   }
 
-  let result = [];
-    
-  const [state, setState] = React.useState({
-    columns: [
-      { title: 'Packet Name', field: 'name_packet' },
-      { title: 'Price', field: 'price_packet', type: 'numeric' }
-    ],
-    data: [
-    //   { name_packet: 'Paket Kering', price_packet: 1000 }
-        database.collection('packet_laundry').get()
-            .then((snapshot) => {
-            const data = snapshot.forEach((doc) => {
-                
-                // console.log(doc.id, '=>', doc.data());
-                // setData({ nama: data.nama, title: data.title })
-                // setState(doc.data())
-                // {doc.data()}
-                result.push(doc.data());
-                console.log(result);
-            });
-        })
-        .catch((err) => {
-            console.log('Error getting documents', err);
-        })
-    ],
-  });
+  onCollectionUpdate = (querySnapshot) => {
+    const packet = [];
+    querySnapshot.forEach((doc) => {
+      const { name_packet, price_packet } = doc.data();
+      packet.push({
+        key: doc.id,
+        doc, // DocumentSnapshot
+        name_packet,
+        price_packet,
+      });
+    });
+    this.setState({
+      packet
+   });
+  }
 
-  return (
-    <MaterialTable
-      title="Packet"
-      columns={state.columns}
-      data={state.data}
-      editable={{
-        onRowAdd: newData =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              setState(prevState => {
-                const data = [...prevState.data];
-                data.push(newData);
-                return { ...prevState, data };
-              });
-            }, 600);
-          }),
-        onRowUpdate: (newData, oldData) =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              if (oldData) {
-                setState(prevState => {
-                  const data = [...prevState.data];
-                  data[data.indexOf(oldData)] = newData;
-                  return { ...prevState, data };
-                });
-              }
-            }, 600);
-          }),
-        onRowDelete: oldData =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              setState(prevState => {
-                const data = [...prevState.data];
-                data.splice(data.indexOf(oldData), 1);
-                return { ...prevState, data };
-              });
-            }, 600);
-          }),
-      }}
-    />
-  );
+  componentDidMount() {
+    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="atas-table">
+        <Button variant="contained" color="primary" float="right">
+          Add Packet
+        </Button>
+        </div>
+        <MaterialTable
+          columns={[
+            { title: "Packet Name", field: "name_packet" },
+            { title: "Packet Price", field: "price_packet" }
+          ]}
+          data={this.state.packet}
+          title="Laundry Packet"
+        />
+      </div>
+    );
+  }
 }
+
+export default Packet
