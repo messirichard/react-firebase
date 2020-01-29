@@ -4,8 +4,9 @@ import {database} from '../../../../config/firebase';
 
 
 export default function Packet() {
-    
-    
+
+
+  let result = [];
     
   const [state, setState] = React.useState({
     columns: [
@@ -16,10 +17,14 @@ export default function Packet() {
     //   { name_packet: 'Paket Kering', price_packet: 1000 }
         database.collection('packet_laundry').get()
             .then((snapshot) => {
-            snapshot.forEach((doc) => {
+            const data = snapshot.forEach((doc) => {
                 console.log(doc.id, '=>', doc.data());
+                // setData({ nama: data.nama, title: data.title })
                 // setState(doc.data())
                 // {doc.data()}
+                  forEach(i => {
+                      result.push(i);
+                });
             });
         })
         .catch((err) => {

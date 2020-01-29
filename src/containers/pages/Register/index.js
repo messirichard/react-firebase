@@ -27,6 +27,7 @@ class Register extends Component{
             this.props.registerAPI({email,password})
             const {history} = this.props
             const res = await this.props.registerAPI({email,password}).catch(err=>err)
+            // console.log("sukses")
             history.push('/')
         }
         // MOVE TO REDUCER
