@@ -21,29 +21,38 @@ class CreatePacket extends Component{
       }
     
       onSubmit = (e) => {
-        e.preventDefault();
-        console.log('sukses1')
-    
-        const { name_packet, price_packet  } = this.state;
-        console.log('sukses2')
+        if(this.state.name_packet !== "" & this.state.price_packet !== 0){
+            e.preventDefault();
+            console.log('sukses1')
         
-        this.ref.add({
-          name_packet,
-          price_packet,
-          
-        }).then((docRef) => {
-          this.setState({
-            name_packet: '',
-            price_packet: ''
-          });
-          this.props.history.push("/packet")
-          console.log('sukses3')
-
-        })
-        .catch((error) => {
-          console.error("Error adding document: ", error);
-        });
-        console.log('sukses4')
+            const { name_packet, price_packet  } = this.state;
+            console.log('sukses2')
+            
+            this.ref.add({
+              name_packet,
+              price_packet,
+              
+            }).then((docRef) => {
+              this.setState({
+                name_packet: '',
+                price_packet: ''
+              });
+              this.props.history.push("/packet")
+              console.log('sukses3')
+    
+            })
+            .catch((error) => {
+              console.error("Error adding document: ", error);
+            });
+            console.log('sukses4')
+        }
+        else{
+            alert("Input Yang benar")
+            this.setState({
+                name_packet: '',
+                price_packet: ''
+            });
+        }
 
       }
 
