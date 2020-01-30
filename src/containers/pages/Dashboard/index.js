@@ -17,19 +17,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import ReportIn from '../Dashboard/ReportIn';
-import ReportOut from '../Dashboard/ReportOut';
-import Packet from '../Dashboard/Packet';
-import Routes from '../routes';
-
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
-
-
+import './Dashboard.scss'
 
 
 const drawerWidth = 240;
@@ -154,30 +142,19 @@ export default function Dashboard(props) {
         </div>
         <Divider />
         <List>
-          {['Packet', 'Report In', 'Report Out', 'Transaction In', 'Transaction Out' ].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-              {/* console.log({index}) */}
+          <a href="/packet">
+            <ListItem button>
+              <ListItemIcon><MailIcon /></ListItemIcon>
+              <ListItemText primary="Packet" />
             </ListItem>
-          ))}
+          </a>
         </List>
-        <Divider />
-        {/* <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List> */}
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
           {props.children}
+        
       </main>
     </div>
   );
 }
-
-// export default Dashboard;

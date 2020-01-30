@@ -1,5 +1,5 @@
 import firebase from '../../firebase';
-import database from '../../firebase';
+// import database from '../../firebase';
 
 
 // export const actionUserName = () => (dispatch) => {

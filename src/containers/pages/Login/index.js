@@ -13,6 +13,7 @@ class Login extends Component{
     }
 
     handletoRegistLogin = () => {
+        console.log('sukses')
         const {history} = this.props
         history.push('/register')
     }
