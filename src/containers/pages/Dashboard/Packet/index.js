@@ -6,15 +6,21 @@ import './Packet.scss';
 // import axios from "axios";
 import {database} from '../../../../config/firebase';
 
-
 class Packet extends Component {
   constructor(props) {
     super(props);
     this.ref = database.collection('packet_laundry');
     this.unsubscribe = null;
     this.state = {
+      loading: false,
       packet: []
     };
+  }
+
+  handletoAddPacket = () => {
+    console.log("klik")
+    const {history} = this.props
+    history.push('/packet/create')
   }
 
   onCollectionUpdate = (querySnapshot) => {
@@ -41,17 +47,35 @@ class Packet extends Component {
     return (
       <div>
         <div className="atas-table">
-        <Button variant="contained" color="primary" float="right">
+        <Button variant="contained" color="primary" float="right" onclick={this.handletoAddPacket}>
           Add Packet
         </Button>
         </div>
         <MaterialTable
+          title="Laundry Packet"
           columns={[
             { title: "Packet Name", field: "name_packet" },
             { title: "Packet Price", field: "price_packet" }
           ]}
           data={this.state.packet}
-          title="Laundry Packet"
+          editable={{
+            onRowUpdate: (newData, oldData) =>
+              new Promise(resolve => {
+                setTimeout(() => {
+                  resolve();
+                  if (oldData) {
+                    
+                  }
+                }, 600);
+              }),
+            onRowDelete: oldData =>
+              new Promise(resolve => {
+                setTimeout(() => {
+                  resolve();
+                  
+                }, 600);
+              }),
+          }}
         />
       </div>
     );
