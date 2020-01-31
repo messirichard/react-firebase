@@ -32,7 +32,8 @@
     "react-scripts": "3.3.0",
     "reactstrap": "^8.4.0",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "tubular-react": "^4.1.5"
   },
   "scripts": {
     "start": "react-scripts start",

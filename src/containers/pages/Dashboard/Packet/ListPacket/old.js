@@ -6,9 +6,7 @@ import Button from '@material-ui/core/Button';
 import './ListPacket.scss';
 import {database} from '../../../../../config/firebase';
 // import RoutesPacket from '../routes.js'
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
+
 
 class ListPacket extends Component {
   constructor(props) {
@@ -18,7 +16,7 @@ class ListPacket extends Component {
     this.state = {
       loading: false,
       packet: [],
-      isLoading:false,
+      selection: false,
     };
   }
 
@@ -27,22 +25,23 @@ class ListPacket extends Component {
     history.push('/packet/create')
   }
 
+  handleCellClick(){
+    console.log("cell clicked")
+  }
+
   onCollectionUpdate = (querySnapshot) => {
     const packet = [];
     querySnapshot.forEach((doc) => {
       const { name_packet, price_packet } = doc.data();
       packet.push({
-        isLoading:true,
         key: doc.id,
-        doc,
+        doc, // DocumentSnapshot
         name_packet,
         price_packet,
       });
-      // console.log(packet.doc.id)
     });
     this.setState({
-      packet,
-      isLoading:false
+      packet
    });
   }
 
@@ -59,42 +58,20 @@ class ListPacket extends Component {
           Add Packet
         </Button>
         </div>
-        <MaterialTable
+        <MaterialTable onCellClick= {this.handleCellClick}
           title="Laundry Packet"
           columns={[
             { title: "Packet Name", field: "name_packet" },
             { title: "Packet Price", field: "price_packet" }
           ]}
+          onRowClick={{
+            
+          }}
           data={this.state.packet}
-          actions={[
-            {
-              icon: EditIcon,
-              tooltip: 'Edit Packet',
-              onClick: (event, rowData) => {
-                const {history} = this.props
-                history.push(`/packet/edit/${rowData.key}`)
-              }
-            },
-            {
-              icon: VisibilityIcon,
-              tooltip: 'Show Packet',
-              onClick: (event, rowData) => {
-                const {history} = this.props
-                history.push(`/packet/show/${rowData.key}`)
-              }
-            },
-            {
-              icon: DeleteIcon,
-              tooltip: 'Delete Packet',
-              onClick: (event, rowData) => {
-                alert("Packet successfully deleted!")
-                database.collection('packet_laundry').doc(rowData.key).delete().then(() => {
-                }).catch((error) => {
-                  console.error("Error removing document: ", error);
-                });
-              }
-            }
-          ]}
+          // data={state.data}
+          options={{
+            selection: false
+          }}
         />
         
       </div>

@@ -10,3 +10,14 @@ button{
 span.MuiButtonBase-root.MuiTableSortLabel-root{
     font-size: 22px;
 }
+
+button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.showhide.MuiButton-containedPrimary{
+    margin-right: 25px;
+}
+
+
+td.MuiTableCell-root.MuiTableCell-body.MuiTableCell-paddingNone{
+    svg.MuiSvgIcon-root{
+        font-size: 20px !important;
+    }
+}
