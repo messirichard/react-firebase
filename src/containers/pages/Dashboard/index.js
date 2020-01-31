@@ -15,8 +15,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import './Dashboard.scss'
 
 
@@ -142,10 +142,18 @@ export default function Dashboard(props) {
         </div>
         <Divider />
         <List>
-          <a href="/packet">
+          <a href="/packet" >
             <ListItem button>
-              <ListItemIcon><MailIcon /></ListItemIcon>
+              <ListItemIcon><CardGiftcardIcon /></ListItemIcon>
               <ListItemText primary="Packet" />
+            </ListItem>
+          </a>
+        </List>
+        <List>
+          <a href="/transactionin" >
+            <ListItem button>
+              <ListItemIcon><ShoppingBasketIcon /></ListItemIcon>
+              <ListItemText primary="Transaction In" />
             </ListItem>
           </a>
         </List>
