@@ -36,12 +36,13 @@ class ShowPacket extends Component {
 
   handletoEdit = () => {
     const {history} = this.props
-    history.push('/packet')
+    // history.push('/packet')
+    history.push(`/packet/edit/${this.state.key}`)
   }
 
   delete(id){
+    console.log("Packet successfully deleted!");
     database.collection('packet_laundry').doc(id).delete().then(() => {
-        console.log("Packet successfully deleted!");
         this.props.history.push("/packet")
       }).catch((error) => {
         console.error("Error removing document: ", error);

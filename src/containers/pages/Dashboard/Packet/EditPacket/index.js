@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {database} from '../../../../../config/firebase';
 import { Link } from 'react-router-dom';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class EditPacket extends Component {
 
@@ -29,10 +30,10 @@ class EditPacket extends Component {
     });
   }
 
-  onChange = (e) => {
-    const state = this.state
-    state[e.target.name] = e.target.value;
-    this.setState({packet:state});
+  onChanges = (e) => {
+    this.setState({
+        [e.target.id]: e.target.value
+    })
   }
 
   onSubmit = (e) => {
@@ -64,27 +65,24 @@ class EditPacket extends Component {
 
   render() {
     return (
-      <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-              EDIT packet
-            </h3>
-          </div>
-          <div class="panel-body">
-            <form onSubmit={this.onSubmit}>
-              <div class="form-group">
-                <label for="title">Name Packet</label>
-                <input type="text" class="form-control" value={this.state.name_packet} onChange={this.onChange} placeholder={this.state.name_packet} />
-              </div>
-              <div class="form-group">
-                <label for="author">Price Packet</label>
-                <input type="text" class="form-control" value={this.state.price_packet} onChange={this.onChange} placeholder={this.state.price_packet} />
-              </div>
-              <button type="submit" class="btn btn-success">Submit</button>
-            </form>
-          </div>
+      <div class="panel panel-default">
+        <Button variant="contained" color="primary" onClick={this.handletoBack}>
+            Back
+        </Button>
+        <div class="panel-heading">
+        <h4>Edit Packet</h4>
         </div>
+        <Form onSubmit={this.onSubmit}>
+          <FormGroup>
+            <Label for="title">Name Packet</Label>
+            <Input type="text" id="name_packet" class="form-control" name={this.state.name_packet} value={this.state.name_packet} onChange={this.onChanges} placeholder={this.state.name_packet} />
+          </FormGroup>
+          <FormGroup>
+            <Label for="author">Price Packet</Label>
+            <Input type="text" id="price_packet" class="form-control" name={this.state.price_packet} value={this.state.price_packet} onChange={this.onChanges} placeholder={this.state.price_packet} />
+          </FormGroup>
+          <Button>Edit Packet</Button>
+        </Form>
       </div>
     );
   }
