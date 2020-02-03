@@ -50,7 +50,6 @@ class ListPacket extends Component {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
   }
 
-
   render() {
     return (
       <div>
