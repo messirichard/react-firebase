@@ -22,7 +22,7 @@
     "materialize-css": "^1.0.0",
     "mdbreact": "^4.27.0",
     "muicss": "^0.10.3",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "react": "^16.14.0",
     "react-bootstrap": "^1.6.1",
     "react-dom": "^16.14.0",
